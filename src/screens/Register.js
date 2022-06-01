@@ -4,7 +4,6 @@ import Formulario from '../components/organism/Formulario';
 import styles from './styles';
 
 const Register = () => {
-  const [useType, setUseType] = useState(false);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sing Up</Text>

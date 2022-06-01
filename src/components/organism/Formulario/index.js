@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, Text} from 'react-native';
+import {View, Text, ScrollView, Pressable} from 'react-native';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import FormStyles from './FormStyles';
 import Input from '../../atoms/Input';
@@ -37,7 +37,7 @@ const Formulario = () => {
         touched,
         isValidating,
       }) => (
-        <View style={FormStyles.container}>
+        <ScrollView style={FormStyles.container}>
           <Input
             title="First Name"
             onChangeText={handleChange('name')}
@@ -59,6 +59,9 @@ const Formulario = () => {
             value={values.password}
             secure
           />
+          <Text style={FormStyles.conditions}>
+            Use 8 or more characters with a mix of letters, numers and symbols
+          </Text>
           <Checkbox textCheckBox="I agree to the Terms and Privacy Policy *" />
           <Checkbox textCheckBox="Suscribe for select product updates." />
           {errors.password && touched.password ? (
@@ -69,12 +72,20 @@ const Formulario = () => {
             onPress={handleChange}
             title="Sing Up"
           />
+          <Text style={FormStyles.or}>or</Text>
           <CustomButton
             valid={isValidating}
             onPress={handleChange}
             title="Sing Up with Google"
+            google
           />
-        </View>
+          <View style={FormStyles.row}>
+            <Text>Already have an account? </Text>
+            <Pressable>
+              <Text style={FormStyles.link}>Log In</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
       )}
     </Formik>
   );

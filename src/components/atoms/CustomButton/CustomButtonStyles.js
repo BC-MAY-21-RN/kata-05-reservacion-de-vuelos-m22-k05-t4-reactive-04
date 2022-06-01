@@ -3,18 +3,24 @@ import {StyleSheet} from 'react-native';
 const CustomButtonStyles = StyleSheet.create({
   TouchableOpacity: {
     justifyContent: 'center',
-    backgroundColor: '#5974f5',
+    backgroundColor: 'grey',
     height: 50,
     alignSelf: 'center',
     width: '95%',
     borderRadius: 10,
-    marginTop: 30,
+    marginTop: 25,
   },
   text: {
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  image: {
+    position: 'absolute',
+    width: 25,
+    height: 25,
+    left: 50,
   },
 });
 

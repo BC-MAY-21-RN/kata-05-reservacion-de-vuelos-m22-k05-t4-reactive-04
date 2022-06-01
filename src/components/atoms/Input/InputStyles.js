@@ -15,6 +15,11 @@ const InputStyles = StyleSheet.create({
     padding: 10,
     fontSize: 20,
   },
+  icono: {
+    position: 'absolute',
+    right: 15,
+    top: 40,
+  },
 });
 
 export default InputStyles;

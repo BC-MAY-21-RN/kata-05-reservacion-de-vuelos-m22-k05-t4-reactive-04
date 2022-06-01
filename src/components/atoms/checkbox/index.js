@@ -7,7 +7,11 @@ const Checkbox = props => {
   const {textCheckBox} = props;
   return (
     <View style={CheckboxStyle.checkboxContainer}>
-      <CheckBox value={isSelected} onValueChange={setSelection} />
+      <CheckBox
+        value={isSelected}
+        onValueChange={setSelection}
+        tintColors={{true: '#5974f5', false: 'grey'}}
+      />
       <Text style={CheckboxStyle.label}>{textCheckBox}</Text>
     </View>
   );
