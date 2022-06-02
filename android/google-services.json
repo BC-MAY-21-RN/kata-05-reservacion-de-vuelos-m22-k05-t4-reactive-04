@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "879082586229",
+    "firebase_url": "https://k05reservacion-de-vuelos-default-rtdb.firebaseio.com",
+    "project_id": "k05reservacion-de-vuelos",
+    "storage_bucket": "k05reservacion-de-vuelos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879082586229:android:08f07f9d57d1a22b2cf83c",
+        "android_client_info": {
+          "package_name": "com.vuelos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879082586229-hsnpg4oa4kno2udlo5ren91bl9mjmrr3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vuelos",
+            "certificate_hash": "19cef336b4dd501fbaff1f9dd1cec971ed122c37"
+          }
+        },
+        {
+          "client_id": "879082586229-ecfnet5vc7stkasu4lt375bpk1b7uk57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcrvj43tZrC5P0GL4Z53rC6q43g2XlyuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879082586229-ecfnet5vc7stkasu4lt375bpk1b7uk57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

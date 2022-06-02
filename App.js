@@ -1,12 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import MainStack from './src/navigation/MainStack';
 
 const App = () => {
-  return (
-    <View>
-      <Text>Hola Mundo</Text>
-    </View>
-  );
+  return <MainStack />;
 };
 
 export default App;
