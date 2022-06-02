@@ -13,7 +13,7 @@ const Input = props => {
     <View>
       <Text style={InputStyles.title}>{title}</Text>
       <TextInput
-        style={InputStyles.input}
+        style={value ? InputStyles.input2 : InputStyles.input}
         onChangeText={onChangeText}
         onBlur={onChangeBlur}
         value={value}

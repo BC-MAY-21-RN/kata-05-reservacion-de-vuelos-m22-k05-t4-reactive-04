@@ -4,12 +4,15 @@ import CustomButtonStyles from './CustomButtonStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const CustomButton = props => {
-  const {title, valid, onPress, google} = props;
+  const {title, disabel, onPress, google} = props;
   return (
     <TouchableOpacity
-      style={CustomButtonStyles.TouchableOpacity}
-      enabled={valid}
-      onPress={onPress}>
+      style={
+        disabel
+          ? CustomButtonStyles.TouchableOpacity2
+          : CustomButtonStyles.TouchableOpacity
+      }
+      onPress={disabel ? onPress : null}>
       {google ? (
         <Image
           style={CustomButtonStyles.image}

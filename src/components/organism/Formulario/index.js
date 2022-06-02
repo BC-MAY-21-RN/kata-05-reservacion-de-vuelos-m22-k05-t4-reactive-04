@@ -1,18 +1,24 @@
 import React from 'react';
 import {View, Text, ScrollView, Pressable} from 'react-native';
-import {Formik, Form, Field, ErrorMessage} from 'formik';
+import {Formik} from 'formik';
 import FormStyles from './FormStyles';
 import Input from '../../atoms/Input';
 import CustomButton from '../../atoms/CustomButton';
 import Checkbox from '../../atoms/checkbox';
+import * as Yup from 'yup';
 
-/*const SignupSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
-    .required('Required'),
+const SignupSchema = Yup.object().shape({
+  name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!'),
   email: Yup.string().email('Invalid email').required('Required'),
-});*/
+  password: Yup.string()
+    .min(8, 'Too Short!')
+    .required('Required')
+    .matches(
+      /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      'Must Contain 8 Characters, One Lowercase, One Number and One Special Case Character',
+    ),
+  check1: Yup.boolean().oneOf([true]).required('Required'),
+});
 
 const Formulario = () => {
   return (
@@ -24,7 +30,7 @@ const Formulario = () => {
         check1: false,
         check2: false,
       }}
-      //validationSchema={SignupSchema}
+      validationSchema={SignupSchema}
       onSubmit={values => {
         console.log(values);
       }}>
@@ -35,7 +41,9 @@ const Formulario = () => {
         values,
         errors,
         touched,
-        isValidating,
+        isValid,
+        dirty,
+        setFieldValue,
       }) => (
         <ScrollView style={FormStyles.container}>
           <Input
@@ -62,19 +70,29 @@ const Formulario = () => {
           <Text style={FormStyles.conditions}>
             Use 8 or more characters with a mix of letters, numers and symbols
           </Text>
-          <Checkbox textCheckBox="I agree to the Terms and Privacy Policy *" />
-          <Checkbox textCheckBox="Suscribe for select product updates." />
+          <Checkbox
+            name="check1"
+            textCheckBox="I agree to the Terms and Privacy Policy *"
+            value={values?.check1}
+            handleChange={nextValue => setFieldValue('check1', nextValue)}
+          />
+          <Checkbox
+            name="check2"
+            textCheckBox="Suscribe for select product updates."
+            value={values?.check2}
+            handleChange={nextValue => setFieldValue('check2', nextValue)}
+          />
           {errors.password && touched.password ? (
             <Text>{errors.password}</Text>
           ) : null}
           <CustomButton
-            valid={isValidating}
-            onPress={handleChange}
+            disabel={isValid && dirty}
             title="Sing Up"
+            onPress={() => console.log('hola')}
           />
           <Text style={FormStyles.or}>or</Text>
           <CustomButton
-            valid={isValidating}
+            disabel={isValid && dirty}
             onPress={handleChange}
             title="Sing Up with Google"
             google
