@@ -1,7 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text, Image} from 'react-native';
 import CustomButtonStyles from './CustomButtonStyles';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const CustomButton = props => {
   const {title, disabel, onPress, google} = props;
