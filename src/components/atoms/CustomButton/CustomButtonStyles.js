@@ -10,6 +10,15 @@ const CustomButtonStyles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 25,
   },
+  TouchableOpacity2: {
+    justifyContent: 'center',
+    backgroundColor: 'blue',
+    height: 50,
+    alignSelf: 'center',
+    width: '95%',
+    borderRadius: 10,
+    marginTop: 25,
+  },
   text: {
     color: 'white',
     fontSize: 15,
