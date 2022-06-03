@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Button, TextInput, View, StyleSheet, Text} from 'react-native';
+import React from 'react';
+import {View, Text} from 'react-native';
 import Formulario from '../components/organism/Formulario';
 import styles from './styles';
 

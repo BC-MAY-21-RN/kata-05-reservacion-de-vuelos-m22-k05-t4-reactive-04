@@ -5,6 +5,7 @@ import FormStyles from './FormStyles';
 import Input from '../../atoms/Input';
 import CustomButton from '../../atoms/CustomButton';
 import Checkbox from '../../atoms/checkbox';
+import {signIn} from '../../../library/utils/auth';
 import * as Yup from 'yup';
 
 const SignupSchema = Yup.object().shape({
@@ -88,7 +89,9 @@ const Formulario = () => {
           <CustomButton
             disabel={isValid && dirty}
             title="Sing Up"
-            onPress={() => console.log('hola')}
+            onPress={() =>
+              signIn(values.name, values.check2, values.email, values.password)
+            }
           />
           <Text style={FormStyles.or}>or</Text>
           <CustomButton
