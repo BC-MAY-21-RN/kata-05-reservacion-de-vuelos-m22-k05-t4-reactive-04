@@ -7,6 +7,7 @@ import CustomButton from '../../atoms/CustomButton';
 import Checkbox from '../../atoms/checkbox';
 import {signIn, logIn} from '../../../library/utils/auth';
 import * as Yup from 'yup';
+import {signInGoogle} from '../../../library/utils/authGoogle';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!'),
@@ -23,6 +24,8 @@ const SignupSchema = Yup.object().shape({
 
 const Formulario = props => {
   const [isRegisterScreen, setIsRegister] = useState(true);
+  const [userData, setUserData] = useState(undefined);
+  console.log(userData);
   return (
     <Formik
       initialValues={{
@@ -114,8 +117,10 @@ const Formulario = props => {
           />
           <Text style={FormStyles.or}>or</Text>
           <CustomButton
-            disabel={isValid && dirty}
-            onPress={handleChange}
+            disabel={true}
+            onPress={() => {
+              setUserData(signInGoogle(props.navigation));
+            }}
             title={
               isRegisterScreen ? 'Sing Up With Google' : 'Log In With Google'
             }
