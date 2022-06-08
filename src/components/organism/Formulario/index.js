@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, ScrollView, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import FormStyles from './FormStyles';
 import Input from '../../atoms/Input';
 import CustomButton from '../../atoms/CustomButton';
+import LoadingIndicator from '../../atoms/LoadingIndicator';
 import Checkbox from '../../atoms/checkbox';
-import {signIn} from '../../../library/utils/auth';
+import {SignIn, logIn} from '../../../library/utils/auth';
 import * as Yup from 'yup';
+import {signInGoogle} from '../../../library/utils/authGoogle';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!'),
@@ -21,7 +23,33 @@ const SignupSchema = Yup.object().shape({
   check1: Yup.boolean().oneOf([true]).required('Required'),
 });
 
-const Formulario = () => {
+const Formulario = props => {
+  const [isRegisterScreen, setIsRegister] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [text, setText] = useState('');
+
+  const Overlay = async (
+    name,
+    check2,
+    email,
+    password,
+    navigation,
+    validator,
+  ) => {
+    try {
+      setText('Signin Up...');
+      setVisible(!visible);
+      (await validator)
+        ? SignIn(name, check2, email, password, navigation)
+        : signInGoogle(navigation);
+      setText('Signed Up');
+      setVisible(!visible);
+    } catch (error) {
+      setVisible(!visible);
+      console.log(error);
+    }
+  };
+
   return (
     <Formik
       initialValues={{
@@ -47,12 +75,17 @@ const Formulario = () => {
         setFieldValue,
       }) => (
         <ScrollView style={FormStyles.container}>
-          <Input
-            title="First Name"
-            onChangeText={handleChange('name')}
-            onBlur={handleBlur('name')}
-            value={values.name}
-          />
+          <Text style={FormStyles.title}>
+            {isRegisterScreen ? 'Sign Up' : 'Login'}
+          </Text>
+          {isRegisterScreen && (
+            <Input
+              title="First Name"
+              onChangeText={handleChange('name')}
+              onBlur={handleBlur('name')}
+              value={values.name}
+            />
+          )}
           {errors.name && touched.name ? <Text>{errors.name}</Text> : null}
           <Input
             title="Email *"
@@ -71,41 +104,71 @@ const Formulario = () => {
           <Text style={FormStyles.conditions}>
             Use 8 or more characters with a mix of letters, numers and symbols
           </Text>
-          <Checkbox
-            name="check1"
-            textCheckBox="I agree to the Terms and Privacy Policy *"
-            value={values?.check1}
-            handleChange={nextValue => setFieldValue('check1', nextValue)}
-          />
-          <Checkbox
-            name="check2"
-            textCheckBox="Suscribe for select product updates."
-            value={values?.check2}
-            handleChange={nextValue => setFieldValue('check2', nextValue)}
-          />
+          {isRegisterScreen && (
+            <Checkbox
+              name="check1"
+              textCheckBox="I agree to the Terms and Privacy Policy *"
+              value={values?.check1}
+              handleChange={nextValue => setFieldValue('check1', nextValue)}
+            />
+          )}
+          {isRegisterScreen && (
+            <Checkbox
+              name="check2"
+              textCheckBox="Suscribe for select product updates."
+              value={values?.check2}
+              handleChange={nextValue => setFieldValue('check2', nextValue)}
+            />
+          )}
           {errors.password && touched.password ? (
             <Text>{errors.password}</Text>
           ) : null}
           <CustomButton
-            disabel={isValid && dirty}
-            title="Sing Up"
-            onPress={() =>
-              signIn(values.name, values.check2, values.email, values.password)
+            disabel={isRegisterScreen ? isValid && dirty : true}
+            title={isRegisterScreen ? 'Sing Up' : 'Log In'}
+            onPress={
+              isRegisterScreen
+                ? () =>
+                    Overlay(
+                      values.name,
+                      values.check2,
+                      values.email,
+                      values.password,
+                      props.navigation,
+                      true,
+                    )
+                : () => logIn(values.email, values.password, props.navigation)
             }
           />
           <Text style={FormStyles.or}>or</Text>
           <CustomButton
-            disabel={isValid && dirty}
-            onPress={handleChange}
-            title="Sing Up with Google"
+            disabel={true}
+            onPress={() =>
+              Overlay(
+                values.name,
+                values.check2,
+                values.email,
+                values.password,
+                props.navigation,
+                false,
+              )
+            }
+            title={
+              isRegisterScreen ? 'Sing Up With Google' : 'Log In With Google'
+            }
             google
           />
           <View style={FormStyles.row}>
             <Text>Already have an account? </Text>
-            <Pressable>
-              <Text style={FormStyles.link}>Log In</Text>
+            <Pressable onPress={() => setIsRegister(!isRegisterScreen)}>
+              {isRegisterScreen ? (
+                <Text style={FormStyles.link}>Log In</Text>
+              ) : (
+                <Text style={FormStyles.link}>Register</Text>
+              )}
             </Pressable>
           </View>
+          <LoadingIndicator visible={visible} text={text} />
         </ScrollView>
       )}
     </Formik>

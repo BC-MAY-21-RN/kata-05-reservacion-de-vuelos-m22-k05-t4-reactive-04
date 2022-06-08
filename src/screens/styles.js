@@ -5,12 +5,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
-  title: {
-    fontSize: 20,
-    color: 'blue',
-    fontWeight: 'bold',
-    margin: 20,
-  },
 });
 
 export default styles;

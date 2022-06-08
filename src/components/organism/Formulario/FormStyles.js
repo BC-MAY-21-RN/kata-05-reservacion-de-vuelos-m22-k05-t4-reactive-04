@@ -13,6 +13,7 @@ const FormStyles = StyleSheet.create({
   link: {
     color: 'blue',
     textDecorationLine: 'underline',
+    marginBottom: 10,
   },
   or: {
     marginTop: 25,
@@ -21,6 +22,12 @@ const FormStyles = StyleSheet.create({
   conditions: {
     bottom: 12,
     marginBottom: 10,
+  },
+  title: {
+    fontSize: 20,
+    color: 'blue',
+    fontWeight: 'bold',
+    marginBottom: 15,
   },
 });
 
