@@ -1,7 +1,9 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import React, {useState} from 'react';
+import {Button, Overlay} from 'react-native-elements';
 
-export const signIn = (firstname, suscribe, email, password, navigation) => {
+export const SignIn = (firstname, suscribe, email, password, navigation) => {
   auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
@@ -23,7 +25,7 @@ export const logIn = (email, password, navigation) => {
     });
 };
 
-const addUserInfo = (firstname, suscribe, email, uid, navigation) => {
+export const addUserInfo = (firstname, suscribe, email, uid, navigation) => {
   firestore()
     .collection('Users')
     .add({

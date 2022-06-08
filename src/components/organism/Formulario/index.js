@@ -4,8 +4,9 @@ import {Formik} from 'formik';
 import FormStyles from './FormStyles';
 import Input from '../../atoms/Input';
 import CustomButton from '../../atoms/CustomButton';
+import LoadingIndicator from '../../atoms/LoadingIndicator';
 import Checkbox from '../../atoms/checkbox';
-import {signIn, logIn} from '../../../library/utils/auth';
+import {SignIn, logIn} from '../../../library/utils/auth';
 import * as Yup from 'yup';
 import {signInGoogle} from '../../../library/utils/authGoogle';
 
@@ -24,8 +25,31 @@ const SignupSchema = Yup.object().shape({
 
 const Formulario = props => {
   const [isRegisterScreen, setIsRegister] = useState(true);
-  const [userData, setUserData] = useState(undefined);
-  console.log(userData);
+  const [visible, setVisible] = useState(false);
+  const [text, setText] = useState('');
+
+  const Overlay = async (
+    name,
+    check2,
+    email,
+    password,
+    navigation,
+    validator,
+  ) => {
+    try {
+      setText('Signin Up...');
+      setVisible(!visible);
+      (await validator)
+        ? SignIn(name, check2, email, password, navigation)
+        : signInGoogle(navigation);
+      setText('Signed Up');
+      setVisible(!visible);
+    } catch (error) {
+      setVisible(!visible);
+      console.log(error);
+    }
+  };
+
   return (
     <Formik
       initialValues={{
@@ -105,12 +129,13 @@ const Formulario = props => {
             onPress={
               isRegisterScreen
                 ? () =>
-                    signIn(
+                    Overlay(
                       values.name,
                       values.check2,
                       values.email,
                       values.password,
                       props.navigation,
+                      true,
                     )
                 : () => logIn(values.email, values.password, props.navigation)
             }
@@ -118,9 +143,16 @@ const Formulario = props => {
           <Text style={FormStyles.or}>or</Text>
           <CustomButton
             disabel={true}
-            onPress={() => {
-              setUserData(signInGoogle(props.navigation));
-            }}
+            onPress={() =>
+              Overlay(
+                values.name,
+                values.check2,
+                values.email,
+                values.password,
+                props.navigation,
+                false,
+              )
+            }
             title={
               isRegisterScreen ? 'Sing Up With Google' : 'Log In With Google'
             }
@@ -136,6 +168,7 @@ const Formulario = props => {
               )}
             </Pressable>
           </View>
+          <LoadingIndicator visible={visible} text={text} />
         </ScrollView>
       )}
     </Formik>

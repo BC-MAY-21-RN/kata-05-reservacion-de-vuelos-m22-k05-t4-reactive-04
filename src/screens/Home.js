@@ -18,7 +18,7 @@ const Home = ({navigation}) => {
       <CustomButton
         title="Cerrar Sesion"
         disabel={true}
-        onPress={() => console.log('hola')}
+        onPress={handleLogout}
       />
     </View>
   );
