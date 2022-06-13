@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import styles from './styles';
-import CustomButton from '../components/atoms/CustomButton';
 import auth from '@react-native-firebase/auth';
+import IconButton from '../components/atoms/IconButton';
+import VerticalList from '../components/organism/VerticalList';
+import data from './Vuelos.json';
 
 const Home = ({navigation}) => {
   const handleLogout = async () => {
@@ -12,14 +14,22 @@ const Home = ({navigation}) => {
       routes: [{name: 'Register'}],
     });
   };
+
   return (
     <View style={styles.container}>
-      <Text> Home Screen </Text>
-      <CustomButton
-        title="Cerrar Sesion"
-        disabel={true}
-        onPress={handleLogout}
-      />
+      <View style={styles.TopBar}>
+        <Text style={styles.title}> My flights </Text>
+        <IconButton
+          name="logout"
+          size={30}
+          onPress={handleLogout}
+          color="#7B90FC"
+        />
+      </View>
+      <VerticalList data={data} />
+      <View style={styles.footer}>
+        <IconButton name="pluscircle" size={65} color="#7B90FC" />
+      </View>
     </View>
   );
 };
