@@ -26,7 +26,6 @@ const Home = ({navigation}) => {
           color="#7B90FC"
         />
       </View>
-      <VerticalList data={data} />
       <View style={styles.footer}>
         <IconButton
           name="pluscircle"

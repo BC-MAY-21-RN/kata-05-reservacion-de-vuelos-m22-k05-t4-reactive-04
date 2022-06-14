@@ -3,34 +3,28 @@ import {View, Text} from 'react-native';
 import styles from './styles';
 import IconButton from '../components/atoms/IconButton';
 import CustomButton from '../components/atoms/CustomButton';
-import InputSelect from '../components/atoms/InputSelect';
 import ListItem from '../components/atoms/ListItem';
 
-const Destination = ({route, navigation}) => {
-  const {origen} = route.params;
+const Date = ({route, navigation}) => {
+  const {origen, destino} = route.params;
   const [disable, setDisable] = useState(false);
-  const [location, setLocation] = useState();
-  const countries = ['Egypt', 'Canada', 'Australia', 'Ireland'];
-  const handleSelect = selectedItem => {
-    setLocation(selectedItem);
-    setDisable(true);
-  };
+  const [fecha, setFecha] = useState();
   return (
     <View style={styles.container}>
       <View style={styles.TopBar}>
         <IconButton name="left" size={30} onPress={() => navigation.goBack()} />
       </View>
-      <ListItem origen={origen} />
-      <Text style={styles.title2}> Where will you be flying to? </Text>
-      <InputSelect data={countries} onSelected={handleSelect} />
+      <ListItem origen={origen} destino={destino} />
+      <Text style={styles.title2}> Select date </Text>
       <View style={styles.footer2}>
         <CustomButton
           title="Next"
           disabel={disable}
           onPress={() => {
-            navigation.navigate('Date', {
+            navigation.navigate('Destination', {
               origen: origen,
-              destino: location,
+              destino: destino,
+              fecha: fecha,
             });
           }}
         />
@@ -39,4 +33,4 @@ const Destination = ({route, navigation}) => {
   );
 };
 
-export default Destination;
+export default Date;
