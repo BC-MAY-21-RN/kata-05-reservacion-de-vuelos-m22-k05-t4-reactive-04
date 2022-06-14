@@ -16,10 +16,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#7B90FC',
   },
+  title2: {
+    marginTop: 20,
+    maxWidth: 300,
+    fontSize: 35,
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'left',
+  },
   footer: {
     position: 'absolute',
     bottom: 15,
     right: '45%',
+  },
+  footer2: {
+    position: 'absolute',
+    bottom: 35,
+    right: 10,
+    width: '100%',
   },
 });
 

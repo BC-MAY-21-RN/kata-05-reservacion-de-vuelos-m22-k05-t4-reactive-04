@@ -28,7 +28,12 @@ const Home = ({navigation}) => {
       </View>
       <VerticalList data={data} />
       <View style={styles.footer}>
-        <IconButton name="pluscircle" size={65} color="#7B90FC" />
+        <IconButton
+          name="pluscircle"
+          size={65}
+          color="#7B90FC"
+          onPress={() => navigation.navigate('Origin')}
+        />
       </View>
     </View>
   );
