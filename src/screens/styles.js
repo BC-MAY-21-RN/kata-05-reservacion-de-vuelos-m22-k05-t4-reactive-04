@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     right: 10,
     width: '100%',
   },
+  picker: {
+    marginTop: 80,
+    width: '100%',
+    height: 120,
+  },
 });
 
 export default styles;

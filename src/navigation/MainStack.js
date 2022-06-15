@@ -7,6 +7,7 @@ import Origin from '../screens/Origin';
 import Destination from '../screens/Destination';
 import Date1 from '../screens/Date';
 import Passengers from '../screens/Passengers';
+import Finish from '../screens/Finish';
 import auth from '@react-native-firebase/auth';
 
 const Stack = createNativeStackNavigator();
@@ -44,6 +45,11 @@ const MainStack = () => {
         <Stack.Screen
           name="Passengers"
           component={Passengers}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Finish"
+          component={Finish}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
