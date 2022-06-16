@@ -7,10 +7,10 @@ const VerticalList = props => {
   const {data} = props;
   const renderItem = ({item, index}) => (
     <ListItem
-      id={item.id}
+      id={index}
       pasajeros={item.passengers}
-      destino={item.Destino}
-      origen={item.Origen}
+      destino={item.destination.aerolinea}
+      origen={item.origin.aerolinea}
       fecha={item.date}
     />
   );
