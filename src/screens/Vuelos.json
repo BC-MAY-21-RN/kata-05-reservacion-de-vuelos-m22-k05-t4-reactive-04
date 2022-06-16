@@ -1,77 +1,77 @@
 [
     {
-      "id": 1,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
+      "id":1,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
       ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
-      ,
-      "date": "September 3, 2020",
-      "passengers": 2
-    },
-    {
-      "id": 2,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
-      ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
       ,
       "date": "September 3, 2020",
       "passengers": 2
     },
     {
-      "id": 3,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
+      "id":2,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
       ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
-      ,
-      "date": "September 3, 2020",
-      "passengers": 2
-    },
-    {
-      "id": 4,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
-      ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
       ,
       "date": "September 3, 2020",
       "passengers": 2
     },
     {
-      "id": 5,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
+      "id":3,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
       ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
-      ,
-      "date": "September 3, 2020",
-      "passengers": 2
-    },
-    {
-      "id": 6,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
-      ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
       ,
       "date": "September 3, 2020",
       "passengers": 2
     },
     {
-      "id": 7,
-      "Origen": 
-        {"aerolineao": "BEG", "lugaro": "Serbia"}
+      "id":4,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
       ,
-      "Destino": 
-        {"aerolinead": "AMS", "lugard": "Netherlands"}
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
+      ,
+      "date": "September 3, 2020",
+      "passengers": 2
+    },
+    {
+      "id":5,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
+      ,
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
+      ,
+      "date": "September 3, 2020",
+      "passengers": 2
+    },
+    {
+      "id":6,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
+      ,
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
+      ,
+      "date": "September 3, 2020",
+      "passengers": 2
+    },
+    {
+      "id":7,
+      "origin": 
+        {"aerolinea": "BEG", "lugar": "Serbia"}
+      ,
+      "destination": 
+        {"aerolinea": "AMS", "lugar": "Netherlands"}
       ,
       "date": "September 3, 2020",
       "passengers": 2
