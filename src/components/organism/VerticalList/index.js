@@ -9,8 +9,8 @@ const VerticalList = props => {
     <ListItem
       id={index}
       pasajeros={item.passengers}
-      destino={item.destination.aerolinea}
-      origen={item.origin.aerolinea}
+      destino={item.destination.lugar}
+      origen={item.origin.lugar}
       fecha={item.date}
     />
   );
