@@ -2,6 +2,8 @@
 
 # Reservación de Vuelos
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/1694dfc85e43e4ccaa98/maintainability)](https://codeclimate.com/github/BC-MAY-21-RN/kata-05-reservacion-de-vuelos-m22-k05-t4-reactive-04/maintainability)
+
 ![Cover](src/assets/img/cover.jpg)
 
 <span>Photo by <a href="https://unsplash.com/@by_syeoni?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Suhyeon Choi</a> on <a href="https://unsplash.com/s/photos/flight?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
