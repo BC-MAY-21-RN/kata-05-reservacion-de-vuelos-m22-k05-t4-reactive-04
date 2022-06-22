@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import styles from './styles';
-import IconButton from '../components/atoms/IconButton';
+import Header from '../components/atoms/Header';
 import CustomButton from '../components/atoms/CustomButton';
 import InputSelect from '../components/atoms/InputSelect';
 import ListItem from '../components/atoms/ListItem';
@@ -17,9 +17,7 @@ const Destination = ({route, navigation}) => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.TopBar}>
-        <IconButton name="left" size={30} onPress={() => navigation.goBack()} />
-      </View>
+      <Header navigation={navigation} />
       <ListItem origen={origen} />
       <Text style={styles.title2}> Where will you be flying to? </Text>
       <InputSelect data={countries} onSelected={handleSelect} />

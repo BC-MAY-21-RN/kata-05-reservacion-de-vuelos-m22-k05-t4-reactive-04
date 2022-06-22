@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import styles from './styles';
-import IconButton from '../components/atoms/IconButton';
+import Header from '../components/atoms/Header';
 import CustomButton from '../components/atoms/CustomButton';
 import ListItem from '../components/atoms/ListItem';
 import ScrollPicker from 'react-native-scroll-picker-wheel';
@@ -16,9 +16,7 @@ const Passengers = ({route, navigation}) => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.TopBar}>
-        <IconButton name="left" size={30} onPress={() => navigation.goBack()} />
-      </View>
+      <Header navigation={navigation} />
       <ListItem origen={origen} destino={destino} fecha={fecha} />
       <Text style={styles.title2}> How many passengers? </Text>
       <View style={styles.picker}>
