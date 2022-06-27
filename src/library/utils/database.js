@@ -2,29 +2,32 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 const db = firestore();
 
-/// addFlightReservation(flight,idUser)
-// const flight =   {
-//      origin: { aerolinea: "BEG", lugar: '' },
-//      destination: { aerolinea: "AMS", lugar: '' },
-//      date: '',
-//      passengers: '',
-//                 }
-
 export const addFlightReservation = async (flight, navigation) => {
-  try {
-    const {origin, destination, date, passengers} = flight;
-    await db.collection('Flights').add({origin, destination, date, passengers});
-    navigation.navigate('Home');
-  } catch (error) {
-    const errorName = 'Could not add flight reservation';
-    console.log(`ERROR:${errorName}    DESCRIPTION:${error}`);
-  }
+  const {origin, destination, date, passengers} = flight;
+  const current = auth().currentUser;
+  await db
+    .collection('Flights')
+    .add({
+      origin: origin,
+      destination: destination,
+      date: date,
+      passengers: passengers,
+      uid: current.uid,
+    })
+    .then(() => {
+      console.log('Flight added!');
+      navigation.navigate('Home');
+    });
 };
 
 export let showFlights = async () => {
+  const current = auth().currentUser;
   try {
     const arrayFlights = [];
-    const usersQuerySnapshot = await firestore().collection('Flights').get();
+    const usersQuerySnapshot = await firestore()
+      .collection('Flights')
+      .where('uid', '==', current.uid)
+      .get();
     usersQuerySnapshot.forEach(documentSnapshot => {
       arrayFlights.push({id: documentSnapshot.id, ...documentSnapshot.data()});
     });
